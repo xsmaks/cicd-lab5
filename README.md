@@ -20,3 +20,8 @@
 gh workflow run os-info.yml -f runner=ubuntu-latest
 gh workflow run os-info.yml -f runner=macos-latest
 ```
+
+## Перевірка
+
+Кожен `git push` у репозиторій запускає процес **Date on push**, тому цей розділ я додав окремим комітом:
+після надсилання на вкладці Actions з'явився новий запуск.
