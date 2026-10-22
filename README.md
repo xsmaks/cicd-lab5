@@ -1,7 +1,7 @@
 # cicd-lab5
 
-[![OS info](https://github.com/xsmaks/cicd-lab5/actions/workflows/os-info.yml/badge.svg)](https://github.com/xsmaks/cicd-lab5/actions/workflows/os-info.yml)
-[![Date on push](https://github.com/xsmaks/cicd-lab5/actions/workflows/push-date.yml/badge.svg)](https://github.com/xsmaks/cicd-lab5/actions/workflows/push-date.yml)
+[![OS info](https://github.com/xsmaks/cicd-lab5/actions/workflows/os-info.yml/badge.svg?branch=master)](https://github.com/xsmaks/cicd-lab5/actions/workflows/os-info.yml)
+[![Date on push](https://github.com/xsmaks/cicd-lab5/actions/workflows/push-date.yml/badge.svg?branch=master)](https://github.com/xsmaks/cicd-lab5/actions/workflows/push-date.yml)
 
 Навчальний репозиторій до **лабораторної роботи №5** з дисципліни _«CI/CD інструментарій»_: GitHub Actions.
 
