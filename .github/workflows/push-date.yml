@@ -1,0 +1,27 @@
+name: Date on push
+
+# Запуск після кожного надсилання комітів (git push) у будь-яку гілку
+on:
+  push:
+
+jobs:
+  print-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Current system date
+        run: date
+
+      - name: Date in other formats
+        run: |
+          echo "UTC:   $(date -u '+%Y-%m-%d %H:%M:%S')"
+          echo "Kyiv:  $(TZ=Europe/Kyiv date '+%Y-%m-%d %H:%M:%S %Z')"
+
+      - name: What triggered the run
+        run: |
+          echo "Event:   $GITHUB_EVENT_NAME"
+          echo "Branch:  $GITHUB_REF_NAME"
+          echo "Commit:  ${GITHUB_SHA::7}"
+          echo "Pusher:  $GITHUB_ACTOR"
+
+      - name: Job summary
+        run: echo "Pushed to **$GITHUB_REF_NAME**, run date $(date -u '+%Y-%m-%d') (UTC)" >> "$GITHUB_STEP_SUMMARY"

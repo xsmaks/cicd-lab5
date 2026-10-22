@@ -1,0 +1,45 @@
+name: OS info
+
+# Запуск вручну: вкладка Actions або команда gh workflow run os-info.yml
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Runner image'
+        type: choice
+        default: ubuntu-latest
+        options:
+          - ubuntu-latest
+          - macos-latest
+
+jobs:
+  os-info:
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Kernel version (uname -v)
+        run: uname -v
+
+      - name: All system information (uname -a)
+        run: uname -a
+
+      - name: Operating system release
+        run: |
+          if [ -f /etc/os-release ]; then
+            cat /etc/os-release
+          else
+            sw_vers
+          fi
+
+      - name: Runner details
+        run: |
+          echo "Runner OS:   $RUNNER_OS"
+          echo "Arch:        $RUNNER_ARCH"
+          echo "CPU cores:   $(getconf _NPROCESSORS_ONLN)"
+          echo "Started by:  $GITHUB_ACTOR"
+
+      - name: Job summary
+        run: |
+          echo "### OS info: ${{ inputs.runner }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          uname -v >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
